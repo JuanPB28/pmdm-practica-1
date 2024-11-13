@@ -87,4 +87,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
+
+    fun onClickHistorico(view: View) {}
 }

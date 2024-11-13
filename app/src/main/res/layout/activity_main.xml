@@ -115,6 +115,17 @@
     </RadioGroup>
 
     <Button
+        android:id="@+id/buttonHistorico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickHistorico"
+        android:text="@string/buttonHistorico"
+        app:layout_constraintBottom_toTopOf="@+id/buttonCalcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radioGroup"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAltura" />
+
+    <Button
         android:id="@+id/buttonCalcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
