@@ -10,4 +10,5 @@
     <string name="resultadoEscrito" />
     <string name="Resultado">00.00</string>
     <string name="buttonHistorico">Histórico</string>
+    <string name="Calificacion">--</string>
 </resources>
