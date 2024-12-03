@@ -53,46 +53,9 @@ class Persona(private val peso: Double, private val altura: Double, private val 
     }
 
     private fun calcularIMC(): Double {
-        val alturaMetros = altura / 100
-        return peso / (alturaMetros * alturaMetros)
+        val alturaDouble = Math.round(altura * 100) / 10000.0
+        val pesoDouble = Math.round(peso * 100) / 100.0
+        val imcDouble = pesoDouble / (alturaDouble * alturaDouble)
+        return Math.round(imcDouble * 100) / 100.0
     }
-
-//    private fun calcularIMC(altura: String, peso: String): Double {
-//        val alturaDouble = Math.round(altura.toDouble() * 100) / 10000.0
-//        val pesoDouble = Math.round(peso.toDouble() * 100) / 100.0
-//        val imc = pesoDouble / (alturaDouble * alturaDouble)
-//        return Math.round(imc * 100) / 100.0
-//    }
-
-//    fun onClickCalcular(view: View) {
-//        try {
-//            closeKeyboard()
-//            val altura = binding.textInputEditTextAltura.text.toString()
-//            val peso = binding.textInputEditTextPeso.text.toString()
-//            val seleccionado = binding.radioGroup.checkedRadioButtonId
-//
-//
-//            if (altura.isEmpty() || peso.isEmpty()) {
-//                Toast.makeText(this, "Introduce altura y peso", Toast.LENGTH_SHORT).show()
-//                return
-//            }
-//
-//            if (seleccionado == -1) {
-//                Toast.makeText(this, "Selecciona un género", Toast.LENGTH_SHORT).show()
-//                return
-//            }
-//
-//            val imc = calcularIMC(altura, peso)
-//            val genero = findViewById<RadioButton>(seleccionado).text.toString()
-//
-//            //Cambiar el valor de textViewResultado
-//            binding.textViewResultado.text = imc.toString()
-//
-//            //Cambiar el valor de textViewResultadoEscrito
-//            binding.textViewResultadoEscrito.text = imcToString(imc, genero)
-//        } catch (e: Exception) {
-//            Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_LONG).show()
-//        }
-//    }
-
 }
