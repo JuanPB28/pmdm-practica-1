@@ -9,6 +9,8 @@ class Persona(private val peso: Double, private val altura: Double, private val 
         calificacion = obtenerCalificacion()
     }
 
+    constructor(genero: String, imc: Double, calificacion: String) : this(0.0, 0.0, genero)
+
     fun getPeso(): Double {
         return peso
 

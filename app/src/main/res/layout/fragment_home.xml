@@ -137,7 +137,7 @@
         android:id="@+id/textViewResultado"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="#DEDEDE"
+        android:background="?attr/colorOnSurfaceInverse"
         android:gravity="center"
         android:text="@string/Resultado"
         android:textAlignment="gravity"

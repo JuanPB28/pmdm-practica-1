@@ -11,4 +11,6 @@
     <string name="Resultado">00.00</string>
     <string name="buttonHistorico">Histórico</string>
     <string name="Calificacion">--</string>
+    <string name="title_historico">Histórico</string>
+    <string name="back_button">Botón atrás</string>
 </resources>

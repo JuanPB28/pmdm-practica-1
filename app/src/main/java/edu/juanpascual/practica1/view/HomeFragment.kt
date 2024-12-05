@@ -1,13 +1,16 @@
 package edu.juanpascual.practica1.view
 
-import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.os.Environment
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.navigation.Navigation
@@ -24,21 +27,19 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         setListeners()
-
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        permisos()
     }
 
     private fun setListeners() {
@@ -46,18 +47,22 @@ class HomeFragment : Fragment() {
             Navigation.findNavController(binding.root).navigate(R.id.navigateToHistorico)
         }
         binding.buttonCalcular.setOnClickListener {
-            calcular()
+            addPersona()
         }
     }
 
-    private fun hideKeyboard() {
-        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+    private fun permisos() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager()) {
+                val intent = Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION)
+                intent.data = Uri.parse("package:" + requireContext().packageName)
+                startActivity(intent)
+            }
+        }
     }
 
-    private fun calcular() {
+    private fun addPersona() {
         try {
-            hideKeyboard()
             // Obtener los valores de altura y peso
             val altura = binding.textInputEditTextAltura.text.toString()
             val peso = binding.textInputEditTextPeso.text.toString()
@@ -85,6 +90,10 @@ class HomeFragment : Fragment() {
 
             //Cambiar el valor de textViewResultadoEscrito
             binding.textViewResultadoEscrito.text = calificacion
+
+            // Guardar en el archivo
+            viewModel.guardarRegistro(persona)
+
         } catch (e: Exception) {
             Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
         }
