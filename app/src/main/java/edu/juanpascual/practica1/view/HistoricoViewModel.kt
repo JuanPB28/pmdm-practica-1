@@ -15,4 +15,8 @@ class HistoricoViewModel : ViewModel() {
     init {
         _historico.value = Persistencia().cargar()
     }
+
+    fun updateItems(newItems: MutableList<Registro>) {
+        _historico.value = newItems
+    }
 }

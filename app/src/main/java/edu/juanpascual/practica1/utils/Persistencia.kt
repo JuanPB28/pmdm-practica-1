@@ -17,7 +17,7 @@ class Persistencia() {
             if (!fichero.exists()) {
                 fichero.createNewFile()
             }
-            fichero.appendText(registro.toString())
+            fichero.appendText(registro.toString() + "\n")
 
             Log.i("Persistencia", "Registro guardado correctamente")
         } catch (e: Exception) {
@@ -36,7 +36,6 @@ class Persistencia() {
 
             fichero.forEachLine { linea ->
                 val partes = linea.split(";")
-                // TODO: Modificar la forma de crear la persona
                 val persona = Persona(partes[1], partes[2].toDouble(), partes[3])
                 val registro = Registro(persona, partes[0])
                 historico.add(registro)

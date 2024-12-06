@@ -9,24 +9,93 @@
     android:layout_marginEnd="6dp"
     android:layout_marginBottom="3dp"
     android:background="?attr/colorPrimaryContainer"
-    android:padding="35dp">
+    android:padding="10dp">
 
     <TextView
-        android:id="@+id/textViewFecha"
+        android:id="@+id/textViewMes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fecha"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:width="100dp"
+        android:text="Mes"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewPersona"
+        android:id="@+id/textViewDia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Persona"
+        android:layout_marginTop="5dp"
+        android:text="00"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewMes"
+        app:layout_constraintStart_toStartOf="@id/textViewMes"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMes" />
+
+    <TextView
+        android:id="@+id/textViewAnyo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="0000"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDia"
+        app:layout_constraintStart_toStartOf="@+id/textViewDia"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDia"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewCalificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Calificación"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDia"
+        app:layout_constraintStart_toEndOf="@+id/textViewMes"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewGenero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="Género"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewMes"
+        app:layout_constraintTop_toTopOf="@+id/textViewDia" />
+
+    <TextView
+        android:id="@+id/textViewIMC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="120dp"
+        android:text="00.00"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textSize="34sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="IMC"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewIMC"
+        app:layout_constraintEnd_toEndOf="@+id/textViewIMC"
+        app:layout_constraintStart_toStartOf="@+id/textViewIMC" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
