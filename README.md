@@ -97,3 +97,44 @@ String.format("%.2f", variable)
 
 ## Tercera parte
 
+Partiendo de la segunda versión de la aplicación MyIMC realizada en la práctica
+anterior. Para esta versión 3.0 se modificará el aspecto y añadirán nuevos
+componentes.
+
+### Qué se pide
+
+Duplica la versión anterior del proyecto (consulta los anexos), para crear la nueva
+versión de la aplicación, MyIMCv3. Deberá respetar el funcionamiento de la
+versión anterior, el cálculo del IMC y la persistencia de la información.
+En esta tercera versión, se sustituirán todos los Toast para mostrar la información
+al usuario por Snackbars sencillos, que muestre únicamente la información.
+
+Otra modificación que se deberá añadir es la de mostrar un Dialog en el momento
+de pulsar el botón “Calcular”, éste preguntará si se quiere o no almacenar la información. El
+Dialog contendrá dos botones que actuarán en consecuencia, mostrando un Snackbar tras la
+selección hecha, por ejemplo, “La información se ha registrado en el histórico” o “La información
+no ha quedado registrada”.
+
+Una modificación más será el uso de CardView en el RecyclerView que ya dispone la aplicación,
+además, se mostrarán dos datos más en el histórico, el peso y la altura, teniendo que encontrarse
+estos almacenados en el fichero de texto.
+
+Para finalizar, deberás eliminar el botón “Histórico” y modificar el interfaz para que haga uso de
+pestañas. Modifica también la versión de la aplicación para que refleje que se trata de la 3.0 en la
+información de la aplicación.
+
+Para entregar la práctica deberás enviar el directorio completo del proyecto creado en Android
+Studio comprimido.
+
+### Cosas a tener en cuenta
+
+- Aplicación de ```Snackbar```.
+- Uso de ```CardView```.
+- Uso de ```DialogFragment```.
+- Utilización de ```Tabs``` en la aplicación.
+- Comenta el código fuente para que sea comprensible.
+- Uso el fichero de recursos ```strings.xml```.
+
+NOTA: A la hora de mostrar un ```Dialog```, si utilizas ```DialogFragment```, es posible que necesites
+utilizar ```fragmentManager``` en lugar de ```supportFragmentManager``` para mostrar el diálogo.
+Dependerá desde donde hagas la llamada.
