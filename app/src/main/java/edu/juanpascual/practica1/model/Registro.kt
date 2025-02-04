@@ -18,7 +18,7 @@ class Registro(private val persona: Persona) {
         return persona
     }
 
-    fun getFecha(): String {
+    private fun getFecha(): String {
         return fecha
     }
 
@@ -52,6 +52,6 @@ class Registro(private val persona: Persona) {
 
     @Override
     override fun toString(): String {
-        return "${getFecha()};" + "${persona.getGenero()};" + "${persona.getIMC()};" + persona.getCalificacion()
+        return "${getFecha()};" + "${persona.getPeso()};" + "${persona.getAltura()};" + persona.getGenero()
     }
 }

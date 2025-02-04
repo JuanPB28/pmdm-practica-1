@@ -16,10 +16,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.RadioButton
-import android.widget.Toast
-import androidx.navigation.Navigation
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
-import edu.juanpascual.practica1.R
 import edu.juanpascual.practica1.databinding.FragmentHomeBinding
 import edu.juanpascual.practica1.model.Persona
 
@@ -48,10 +46,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setListeners() {
-        binding.buttonHistorico.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.navigateToHistorico)
-        }
-
         binding.buttonCalcular.setOnClickListener {
             addPersona()
         }
@@ -78,32 +72,45 @@ class HomeFragment : Fragment() {
 
             // Validar que los campos no estén vacíos
             if (altura.isEmpty() || peso.isEmpty()) {
-                Toast.makeText(context, "Introduce altura y peso", Toast.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "Introduce altura y peso", Snackbar.LENGTH_SHORT).show()
                 return
             }
 
             if (seleccionado == -1) {
-                Toast.makeText(context, "Selecciona un género", Toast.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "Selecciona un género", Snackbar.LENGTH_SHORT).show()
                 return
             }
 
-            // Crear un objeto Persona con los valores
-            val genero = binding.radioGroup.findViewById<RadioButton>(seleccionado).text.toString()
-            val persona = Persona(peso.toDouble(), altura.toDouble(), genero)
-            val imc = persona.getIMC()
-            val calificacion = persona.getCalificacion()
+            // Dialog para confirmar
+            val builder = android.app.AlertDialog.Builder(requireContext())
+            builder.setMessage("¿Quieres guardar los datos?")
+            builder.setPositiveButton("Confirmar") { _, _ ->
+                // Crear un objeto Persona con los valores
+                val genero = binding.radioGroup.findViewById<RadioButton>(seleccionado).text.toString()
+                val persona = Persona(peso.toDouble(), altura.toDouble(), genero)
+                val imc = persona.getIMC()
+                val calificacion = persona.getCalificacion()
 
-            //Cambiar el valor de textViewResultado
-            binding.textViewResultado.text = imc.toString()
+                //Cambiar el valor de textViewResultado
+                binding.textViewResultado.text = imc.toString()
 
-            //Cambiar el valor de textViewResultadoEscrito
-            binding.textViewResultadoEscrito.text = calificacion
+                //Cambiar el valor de textViewResultadoEscrito
+                binding.textViewResultadoEscrito.text = calificacion
 
-            // Guardar en el archivo
-            viewModel.guardarRegistro(persona)
+                // Guardar en el archivo
+                viewModel.guardarRegistro(persona)
+
+                Snackbar.make(binding.root, "Guardado", Snackbar.LENGTH_SHORT).show()
+            }
+            builder.setNegativeButton("Cancelar") { _, _ ->
+                Snackbar.make(binding.root, "Cancelado", Snackbar.LENGTH_SHORT).show()
+            }
+
+            val dialog = builder.create()
+            dialog.show()
 
         } catch (e: Exception) {
-            Toast.makeText(context, "Error: ${e.message}", Toast.LENGTH_LONG).show()
+            Snackbar.make(binding.root, "Error: ${e.message}", Snackbar.LENGTH_SHORT).show()
         }
     }
 

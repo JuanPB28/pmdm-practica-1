@@ -6,26 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".view.HomeFragment">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/materialToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="?attr/colorOnPrimary"
-            android:textStyle="bold" />
-    </com.google.android.material.appbar.MaterialToolbar>
-
     <TextView
         android:id="@+id/textPeso"
         android:layout_width="wrap_content"
@@ -47,7 +27,7 @@
         android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialToolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditTextPeso"
@@ -112,16 +92,6 @@
             app:layout_constraintStart_toEndOf="@+id/radioButtonHombre"
             app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
     </RadioGroup>
-
-    <Button
-        android:id="@+id/buttonHistorico"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/buttonHistorico"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCalcular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/radioGroup"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutAltura" />
 
     <Button
         android:id="@+id/buttonCalcular"

@@ -1,6 +1,5 @@
 package edu.juanpascual.practica1.utils
 
-import android.content.Context
 import android.os.Environment
 import android.util.Log
 import edu.juanpascual.practica1.model.Persona
@@ -36,7 +35,7 @@ class Persistencia() {
 
             fichero.forEachLine { linea ->
                 val partes = linea.split(";")
-                val persona = Persona(partes[1], partes[2].toDouble(), partes[3])
+                val persona = Persona(partes[1].toDouble(), partes[2].toDouble(), partes[3])
                 val registro = Registro(persona, partes[0])
                 historico.add(registro)
             }
