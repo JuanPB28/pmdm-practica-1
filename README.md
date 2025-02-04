@@ -138,3 +138,56 @@ Studio comprimido.
 NOTA: A la hora de mostrar un ```Dialog```, si utilizas ```DialogFragment```, es posible que necesites
 utilizar ```fragmentManager``` en lugar de ```supportFragmentManager``` para mostrar el diálogo.
 Dependerá desde donde hagas la llamada.
+
+## Cuarta parte
+
+Partiendo de la tercera versión de la aplicación MyIMC realizada en la práctica
+anterior, se creará una versión 4.0 en la que básicamente se cambiará el sistema
+de persistencia de los datos.
+
+### Qué se pide
+
+Duplica la versión anterior del proyecto (consulta los anexos), para crear la
+nueva versión de la aplicación, MyIMCv4. Deberá respetar el funcionamiento
+de la versión anterior, el cálculo del IMC, el funcionamiento de ```tabs```, los
+```fragments``` y el listado mediante el ```recycler view```. Deberá mantenerse también el
+uso de los ```diálogos``` y ```SnackBars```.
+
+Esta nueva versión sustituirá el uso de un fichero de texto
+para almacenar la información, por una base de datos local.
+Concretamente se almacenará la información en una única
+tabla con los campos identificador, fecha, sexo, imc, peso, altura y estado.
+
+Deberás añadir la posibilidad de eliminar elementos del listado, y por ende, de
+la base de datos. Para activar la eliminación, deberás utilizar una pulsación
+larga sobre el elemento en cuestión, tras la cual deberá pedirse confirmación, si
+se acepta, se borrará, tanto el elemento de la lista como el registro de la base de
+datos.
+
+Modifica la versión de la aplicación para que refleje que se trata de la 4.0 en la información de la
+aplicación.
+
+Para entregar la práctica deberás enviar el directorio completo del proyecto creado en Android
+Studio comprimido.
+
+### Cosas a tener en cuenta
+
+- DB Adapter.
+- Eliminar elementos del listado.
+- Comenta el código fuente para que sea comprensible.
+- Uso el fichero de recursos ```strings.xml```.
+
+NOTA: Para trabajar con el recycler view y, añadir la opción de eliminar, puede resultar más fácil
+pasar la información a mostrar de la base de datos a una lista, en vez de utilizar un ```cursor```.
+
+NOTA 2: Debes saber que el método para activar la pulsación larga se llama
+```setOnLongClickListener()``` , el cual siempre devolverá un valor bool para indicar si se ha completado
+la acción, suele encontrarse con el siguiente formato: ```return@setOnLongClickListener false``` .
+
+NOTA 3: No se ha visto en los apuntes, pero puedes realizar un trabajo de
+investigación y optar por el deslizado para eliminar en lugar de la pulsación
+larga, o ambos métodos, es opcional. Para el deslizado, como pista, deberá
+implementarse la clase ```itemTouchCallbak``` , la cual se implementa fuera del
+```adapter``` del ```recycler view```, para después asociársela. Para la eliminación
+mediante deslizado no es necesario mostrar el cuadro de diálogo de
+confirmación.
