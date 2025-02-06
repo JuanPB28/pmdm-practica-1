@@ -28,6 +28,16 @@
             android:background="?attr/colorPrimaryContainer">
 
             <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID"
+                android:textColor="@color/design_default_color_surface"
+                android:textSize="8sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
                 android:id="@+id/textViewMes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

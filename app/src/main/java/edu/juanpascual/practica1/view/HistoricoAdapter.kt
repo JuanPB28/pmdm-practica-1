@@ -22,6 +22,7 @@ class HistoricoAdapter(
 
     override fun onBindViewHolder(holder: HistoricoViewHolder, position: Int) {
         // Establecer los valores en el ViewHolder
+        holder.binding.textViewId.text = items[position].getId().toString()
         holder.binding.textViewMes.text = items[position].getMes()
         holder.binding.textViewDia.text = items[position].getDia()
         holder.binding.textViewAnyo.text = items[position].getAnyo()
@@ -34,6 +35,11 @@ class HistoricoAdapter(
         // Configurar el click listener
         holder.binding.cardViewHistorico.setOnClickListener {
             clickListener.onItemClicked(items[position])
+        }
+
+        holder.binding.cardViewHistorico.setOnLongClickListener {
+            clickListener.onItemLongClicked(items[position])
+            true
         }
     }
 

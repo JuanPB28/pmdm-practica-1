@@ -98,7 +98,7 @@ class HomeFragment : Fragment() {
                 binding.textViewResultadoEscrito.text = calificacion
 
                 // Guardar en el archivo
-                viewModel.guardarRegistro(persona)
+                viewModel.guardarRegistro(requireContext(), persona)
 
                 Snackbar.make(binding.root, "Guardado", Snackbar.LENGTH_SHORT).show()
             }

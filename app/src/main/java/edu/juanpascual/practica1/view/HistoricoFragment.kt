@@ -1,6 +1,5 @@
 package edu.juanpascual.practica1.view
 
-import android.content.Intent
 import androidx.fragment.app.viewModels
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -23,6 +22,11 @@ class HistoricoFragment : Fragment(), RegistroClickListener {
     private lateinit var adapter: HistoricoAdapter
     private val viewModel: HistoricoViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.loadItems(requireContext())
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +45,24 @@ class HistoricoFragment : Fragment(), RegistroClickListener {
         val calificacion = registro.getPersona().getCalificacion()
         val imc = registro.getPersona().getIMC()
         Snackbar.make(binding.root, calificacion + " " + "(${imc})", Snackbar.LENGTH_SHORT).show()
+    }
+
+    override fun onItemLongClicked(registro: Registro) {
+        // Dialog para confirmar
+        val builder = android.app.AlertDialog.Builder(requireContext())
+        builder.setMessage("¿Quieres eliminar el IMC ${registro.getPersona().getIMC()} del ${registro.getFecha()}?")
+        builder.setPositiveButton("Confirmar") { _, _ ->
+            // Eliminar
+            viewModel.deleteItem(requireContext(), registro)
+            Snackbar.make(binding.root, "Eliminado", Snackbar.LENGTH_SHORT).show()
+        }
+        builder.setNegativeButton("Cancelar") { _, _ ->
+            Snackbar.make(binding.root, "No se ha eliminado", Snackbar.LENGTH_SHORT).show()
+        }
+
+        val dialog = builder.create()
+        dialog.show()
+
     }
 
 

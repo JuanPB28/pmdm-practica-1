@@ -3,6 +3,7 @@ package edu.juanpascual.practica1.model
 import android.icu.util.Calendar
 
 class Registro(private val persona: Persona) {
+    private var id: Int = 0
     private var fecha: String
 
     init {
@@ -10,7 +11,8 @@ class Registro(private val persona: Persona) {
         this.fecha = "${date.get(Calendar.DAY_OF_MONTH)}-${date.get(Calendar.MONTH) + 1}-${date.get(Calendar.YEAR)}"
     }
 
-    constructor(persona: Persona, fecha: String) : this(persona) {
+    constructor(persona: Persona, id: Int, fecha: String) : this(persona) {
+        this.id = id
         this.fecha = fecha
     }
 
@@ -18,7 +20,11 @@ class Registro(private val persona: Persona) {
         return persona
     }
 
-    private fun getFecha(): String {
+    fun getId(): Int {
+        return id
+    }
+
+    fun getFecha(): String {
         return fecha
     }
 
